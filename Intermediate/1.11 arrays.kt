@@ -52,3 +52,20 @@ fun main(args: Array<String>){
         println(element)
     }
 }
+
+
+ println("size")
+    var size = readLine()!!.toInt()
+    var  arr = Array<Int>(size){0}
+    println("enter target")
+    var target = readLine()!!.toInt()
+
+    println("eneter value")
+    for (i in 0 until  size){
+        arr[i] = readLine()!!.toInt()
+    }
+
+    println("print")
+    for (i in 0 until size){
+        println(arr[i])
+    }
