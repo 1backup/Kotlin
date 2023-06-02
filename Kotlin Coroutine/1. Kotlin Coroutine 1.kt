@@ -89,6 +89,10 @@ Thread.sleep(1000)
 // where as in case of delay the whole code of subsequent thread gets suspended, instead of getting blocked, it allows other thread to work, 
 // where in case of thread. sleep() it wont work. 
 
+
+
+
+
 // code : 4
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
