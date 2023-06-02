@@ -76,3 +76,15 @@ Main Thread finish main
 // in this case the code run the backgroun thread when we give time. 
 // becasue in the real world we don't know how much time it will take 
 // so we need find better soultion. 
+
+
+// another important thing 
+
+//use 
+delay(1000) 
+// in place of 
+Thread.sleep(1000)
+
+// because in case of thread.sleep, the whole code of the subsequent thread gets blocked, 
+// where as in case of delay the whole code of subsequent thread gets suspended, instead of getting blocked, it allows other thread to work, 
+// where in case of thread. sleep() it wont work. 
