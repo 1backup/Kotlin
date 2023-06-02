@@ -81,10 +81,33 @@ Main Thread finish main
 // another important thing 
 
 //use 
-delay(1000) 
+delay(1000)  // but it cant be called outside of coroutine. because its a suspending function. 
 // in place of 
 Thread.sleep(1000)
 
 // because in case of thread.sleep, the whole code of the subsequent thread gets blocked, 
 // where as in case of delay the whole code of subsequent thread gets suspended, instead of getting blocked, it allows other thread to work, 
 // where in case of thread. sleep() it wont work. 
+
+// code : 4
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
+fun main(){
+
+    runBlocking { // this is inside the main thread.
+        println("Main Program Starts ${Thread.currentThread().name}") //this is for main thread
+
+        GlobalScope.launch { // child coroutine in this case. 
+            println("Fake work starts: ${Thread.currentThread().name}")
+            delay(1000)
+            println("Fake work stops: ${Thread.currentThread().name}")
+        }
+
+        delay(2000) // execute in the main thread. 
+        println("Main Thread finish ${Thread.currentThread().name}") //this is for main thread
+    }
+
+}
