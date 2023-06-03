@@ -91,5 +91,27 @@ Main Thread finish main
 
 
 // code 3 : using async function . 
+// using async function, you can return some data. 
+import kotlinx.coroutines.*
+
+fun main(){
+
+    runBlocking { // this is inside the main thread.
+        println("Main Program Starts ${Thread.currentThread().name}") //this is for main thread
+
+        val jobDeffered: Deferred<Int> = async {
+            println("Fake work starts: ${Thread.currentThread().name}")
+            delay(1000)
+            println("Fake work stops: ${Thread.currentThread().name}")
+            15
+        }
+
+        val num: Int = jobDeffered.await()
+
+        //job.join() // this job function also wait for the coroutine to complete execution
+        println("Main Thread finish ${Thread.currentThread().name}") //this is for main thread
+    }
+
+}
 
 
